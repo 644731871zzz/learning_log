@@ -20,4 +20,6 @@ def register(request):
     #显示空表单或指出表单无效
     #如果用户填写的信息无效,is_valid拒绝了,但是其中的form还包含无效的信息传递给模板显示
     context = {'form': form}
+    #即使是用户名或者密码错误,也将会存储在context中,在html中显示
+    #不论如何前者中if验证合理性的语句已经被执行,所以会将验证信息存储处在form.error中后显示
     return render(request,'registration/register.html',context)
