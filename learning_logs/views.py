@@ -65,6 +65,9 @@ def new_entry(request,topic_id):
     #获取id
     topic=Topic.objects.get(id=topic_id)
 
+    #保护用户的权限
+    check_topic_owner(request,topic)
+
     #检查请求方法是否为POST
     #如果是GET将会创建新的表单
     if request.method != 'POST':
